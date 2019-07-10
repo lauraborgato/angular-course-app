@@ -1,6 +1,6 @@
-export interface Author{
-    name: string;
-    lastName:string;
-    birthDay: Date;
-    fakeName: string;
+export class Author{
+    constructor(public name: string,
+        public lastName:string,
+        public birthDay: Date,
+        public fakeName: string) {}
 }
