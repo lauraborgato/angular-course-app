@@ -1,41 +1,51 @@
 <div class="row">
-    <div class="col-xs-12">
-      <img
-        [src]="recipe.imagePath"
-        alt="{{ recipe.name }}"
-        class="img-responsive"
-        style="max-height: 300px;">
+  <div class="col-sm-12">
+    <img [src]="book.imageUrl" alt="{{ book.title }}" class="img-responsive" style="max-height: 300px;">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <h1>{{ book.title }} / {{ book.price }}</h1>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="btn-group" appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage books <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Book</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Book</a></li>
+      </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>{{ recipe.name }}</h1>
-    </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <button class="btn btn-success">To Shopping Cart</button>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div
-        class="btn-group"
-        appDropdown>
-        <button
-          type="button"
-          class="btn btn-primary dropdown-toggle">
-          Manage Recipe <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
-          <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Recipe</a></li>
-          <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Recipe</a></li>
-        </ul>
-      </div>
-    </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{ book.description }}
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      {{ recipe.description }}
-    </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 align-content-center">
+    {{ book.author.name }} | {{ book.publishDate  | date:'longDate' }}
   </div>
-  <div class="row">
+</div>
+<hr>
+<div class="row">
+  <h3 class="col-sm-12">Outline</h3>
+  <div class="col-sm-12">
+    {{book.outline}}
+  </div>
+</div>
+<!--<div class="row">
     <div class="col-xs-12">
       <ul class="list-group">
         <li
@@ -45,4 +55,4 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div>-->

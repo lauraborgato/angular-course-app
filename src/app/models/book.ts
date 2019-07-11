@@ -6,5 +6,6 @@ export class Book {
         public author: Author,
         public publishDate: Date,
         public outline: string,
-        public imageUrl:string) { }
+        public imageUrl:string,
+        public price: string) { }
 }

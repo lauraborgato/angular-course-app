@@ -1,8 +1,11 @@
-<a style="cursor: pointer;" routerLink="./'index'" routerLinkActive="active" 
+<a style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" 
   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
   <div class="pull-left">
     <h4 class="list-group-item-heading">Title: {{ book.title }}</h4>
     <p class="list-group-item-text">Author: {{ book.author.name }}, {{book.author.lastName}} </p>
+  </div>
+  <div class="pull-center">
+    <h5>{{book.price}}</h5>
   </div>
   <span class="pull-right">
     <img [src]="book.imageUrl" alt="{{ book.name }}" class="img-responsive" style="max-height: 100px;">

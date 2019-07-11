@@ -4,7 +4,12 @@
   </div>
 </div>
 <hr>
+
 <div class="row">
+  <div class="col-sm-12">
+    <label class="form-inline">Search: <input type="text" class="form-control" [(ngModel)]="searchText"> <button class="btn btn-dark"
+        (click)="filterBookList()">Go</button></label> <!--mejorar con un pipe-->
+  </div>
   <div class="col-sm-12" *ngFor="let book of books; let i = index">
     <app-book-list-item [book]="book" [index]="i"></app-book-list-item>
   </div>

@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BookEditComponent } from './books-container/book-edit/book-edit.component';
 import { BooksContainerComponent } from './books-container/books-container.component';
+import { BookDetailComponent } from './books-container/book-detail/book-detail.component';
+import { BookResolverService } from './books-container/book-resolver.service';
 
 const routes: Routes = [
-  { path: '', component: BooksContainerComponent },
+  { path: '', redirectTo: '/books', pathMatch: 'full'  },
   {
     path: 'books', component: BooksContainerComponent, children: [
-      { path: ':id', component: BookEditComponent }
+      { path: ':id', component: BookDetailComponent, resolve: [BookResolverService] }
     ]
   }
 ];
