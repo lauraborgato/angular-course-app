@@ -10,14 +10,14 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-sm-12">
-    <div class="btn-group" appDropdown>
+  <div class="col-sm-12 dropdown">
+    <div class="btn-group" appDropdown #r="appDropdown">
       <button type="button" class="btn btn-primary dropdown-toggle">
         Manage books <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu">
-        <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Book</a></li>
-        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Book</a></li>
+      <ul class="dropdown-menu" [ngClass]="{'show': r.isOpen }">
+        <li><a style="cursor: pointer;" class="dropdown-item" (click)="onEditBook()">Edit Book</a></li>
+        <li><a style="cursor: pointer;" class="dropdown-item" (click)="onDeleteRecipe()">Delete Book</a></li>
       </ul>
     </div>
   </div>

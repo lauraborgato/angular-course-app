@@ -14,8 +14,8 @@ export class BookDetailComponent implements OnInit {
   id: number;
 
   constructor(private booksService: BookService,
-              private route: ActivatedRoute,
-              private router: Router) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -34,21 +34,21 @@ export class BookDetailComponent implements OnInit {
         }
       );*/
   }
-/*
-  onAddToShoppingList() {
-    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  /*
+    onAddToShoppingList() {
+      this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+    }
+  */
+  onEditBook() {
+    //this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
-
-  onEditRecipe() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
-  }
-
-  onDeleteRecipe() {
-    this.recipeService.deleteRecipe(this.id);
-    this.router.navigate(['/recipes']);
-  }
-*/
+  /*
+    onDeleteRecipe() {
+      this.recipeService.deleteRecipe(this.id);
+      this.router.navigate(['/recipes']);
+    }
+  */
 
 }
 

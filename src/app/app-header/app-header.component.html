@@ -12,15 +12,14 @@
         <a class="nav-link" routerLink="/cart">Shopping Cart</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Log Out</a>
+        <a class="nav-link" (click)="onLogout()" *ngIf='isAuthenticate'>Log Out</a>
       </li>
-      <li class="nav-item dropdown flex-row ml-md-auto d-none d-md-flex">
-        <a class="nav-link dropdown-toggle" appDropdown id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown flex-row ml-md-auto d-none d-md-flex" appDropdown #r="appDropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Login
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Login As Admin</a>
+        <div class="dropdown-menu" [ngClass]="{'show': r.isOpen }" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/login">Login</a>
         </div>
       </li>
     </ul>
