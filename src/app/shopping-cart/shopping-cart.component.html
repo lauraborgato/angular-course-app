@@ -1,3 +1,29 @@
-<p>
-  shopping-cart works!
-</p>
+<div class="row">
+  <div class="col-sm-12">
+      <app-shopping-cart-edit></app-shopping-cart-edit>
+  </div>
+</div>
+<hr>
+<div class="col-sm-12">
+  <div class="col-sm-12">
+    <button class="btn btn-success" routerLink="/books">Add to cart</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <ul class="list-group col-sm-12">
+    <a class="list-group-item" style="cursor: pointer" *ngFor="let book of cart; let i = index">
+      <div class="col-sm-12">
+        <app-shopping-card-item [book]="book" [index]="i"></app-shopping-card-item>
+      </div>
+    </a>
+  </ul>
+</div>
+<hr>
+<div class="row text-success text-right">
+  <div class="col-sm-7">
+    <h2>Total: {{ total }}</h2>
+    <button class="btn btn-success">Check Out</button> |
+    <button class="btn btn-danger" (click)="clearCart()">Cancel</button>
+  </div>
+</div>

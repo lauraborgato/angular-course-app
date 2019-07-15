@@ -1,0 +1,17 @@
+<div class="list-group-item d-flex justify-content-between align-items-center">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">Title: {{ book.title }}</h4>
+    <p class="list-group-item-text">Author: {{ book.author.name }}, {{book.author.lastName}} </p>
+  </div>
+  <div class="pull-center">
+    <h3>${{book.price}}({{book.amount}})</h3>
+    <h5>Total: {{book.price * book.amount}}</h5>
+  </div>
+  <span class="pull-right">
+    <img [src]="book.imageUrl" alt="{{ book.name }}" class="img-responsive" style="max-height: 100px;">
+  </span>
+  <div class="col-sm-4">
+    <button class="btn btn-primary" (click)="onEdit()">Edit</button> |
+    <button class="btn btn-danger" (click)="removeBook()">Remove</button>
+  </div>
+</div>

@@ -34,11 +34,11 @@ export class BookDetailComponent implements OnInit {
         }
       );*/
   }
-  /*
-    onAddToShoppingList() {
-      this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
-    }
-  */
+  
+  addBookToShoppingCart() {
+    this.booksService.addBookToShoppingList(this.book, this.id);
+  }
+  
   onEditBook() {
     //this.router.navigate(['edit'], {relativeTo: this.route});
     this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });

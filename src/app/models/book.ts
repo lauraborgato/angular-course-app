@@ -7,5 +7,6 @@ export class Book {
         public publishDate: Date,
         public outline: string,
         public imageUrl:string,
-        public price: string) { }
+        public price: number,
+        public amount?: number) { }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../log-in/auth.service';
 import { Subscription } from 'rxjs';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +12,18 @@ import { Subscription } from 'rxjs';
 export class AppHeaderComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean = false;
   private userSub: Subscription;
-  constructor(private authService:AuthService) { }
+  private scSub: Subscription;
+  totalItems: number;
+  constructor(private authService:AuthService, private shoppingCartService : ShoppingCartService) { }
 
   ngOnInit() {
+    this.totalItems = this.shoppingCartService.getTotalItems();
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
     });
+    this.scSub = this.shoppingCartService.cartSubject.subscribe(()=>{ this.totalItems = this.shoppingCartService.getTotalItems()})
+
+    console.log(this.totalItems);
   }
   
   onLogOut(){
@@ -24,5 +32,6 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.userSub.unsubscribe();
+    this.scSub.unsubscribe();
   }
 }

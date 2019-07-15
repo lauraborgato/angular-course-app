@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LoadingSpinnerComponent } from './sheared/loading-spinner/loading-spinner.component';
 import { DropdownDirective } from './sheared/dropdown.directive';
+import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
+import { ShoppingCardItemComponent } from './shopping-cart/shopping-card-item/shopping-card-item.component';
+import { ShoppingCartEditComponent } from './shopping-cart/shopping-cart-edit/shopping-cart-edit.component';
+import { FilterPipe } from './sheared/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,16 +34,20 @@ import { DropdownDirective } from './sheared/dropdown.directive';
     ShoppingCartComponent,
     LogInComponent,
     LoadingSpinnerComponent,
-    DropdownDirective
+    DropdownDirective,
+    ShoppingCardItemComponent,
+    ShoppingCartEditComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
-  providers: [BookService],
+  providers: [BookService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

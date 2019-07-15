@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-sm-6">
-    <h1>{{ book.title }} / {{ book.price }}</h1>
+    <h1>{{ book.title }} / ${{ book.price }}</h1>
   </div>
 </div>
 <hr>
@@ -24,7 +24,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
-    <button class="btn btn-success">To Shopping Cart</button>
+    <button class="btn btn-success" (click)="addBookToShoppingCart()">To Shopping Cart</button>
   </div>
 </div>
 <hr>

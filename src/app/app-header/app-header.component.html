@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent" appDropdown>
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent col-sm-12" appDropdown>
   <a class="navbar-brand" routerLink="">Book Shop</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -17,6 +18,17 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
+
+
     </ul>
   </div>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/cart">
+        <fa name="shopping-cart" class="icon-large"> </fa>
+        <span class="badge">{{ totalItems }}</span>
+      </a>
+    </li>
+  </ul>
+
 </nav>
