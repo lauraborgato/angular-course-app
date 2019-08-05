@@ -11,6 +11,7 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 
 export class BookEditComponent implements OnInit {
+  publishDate: Date;
   book: Book;
   id: number = null;
   bookForm: FormGroup;
