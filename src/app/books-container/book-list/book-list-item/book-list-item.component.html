@@ -2,7 +2,7 @@
   class="list-group-item list-group-item-action d-flex">
   <div class="pull-left col-sm-6">
     <h4 class="list-group-item-heading">Title: {{ book.title }}</h4>
-    <p class="list-group-item-text">Author: {{ book.author.name }}, {{book.author.lastName}} </p>
+    <p class="list-group-item-text">Author: <span *ngFor="let aut of book.author">{{ aut.name }}, {{aut.lastName}} </span> </p>
   </div>
   <div class="pull-center col-sm-3">
     <h5>${{book.price}}</h5>

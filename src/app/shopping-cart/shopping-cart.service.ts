@@ -13,7 +13,7 @@ export class ShoppingCartService implements OnInit{
     cartSubject = new Subject<Book[]>();
     startEditing = new Subject<number>();
     private cart: Book[] = [
-        new Book("Libro-1", new Author("Jhon", "Doe", new Date("14/12/1987"), ""), new Date(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "https://www.planetadelibros.com/usuaris/libros/fotos/255/m_libros/portada_origen_dan-brown_201706271532.jpg", 1200.21, 1)
+        new Book("Libro-1", [ new Author("Jhon", "Doe", new Date("14/12/1987"), "") ], new Date(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "https://www.planetadelibros.com/usuaris/libros/fotos/255/m_libros/portada_origen_dan-brown_201706271532.jpg", 1200.21, 1)
     ];
     constructor(){}
 

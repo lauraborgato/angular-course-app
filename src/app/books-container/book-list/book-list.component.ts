@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
 
@@ -10,10 +12,16 @@ import { BookService } from '../book.service';
 export class BookListComponent implements OnInit {
   books: Book[];
   searchText = "";
+  bookSubscription: Subscription;
   constructor(private booksService: BookService) { }
 
   ngOnInit() {
     this.books = this.booksService.getBooks();
+    this.bookSubscription = this.booksService.subject.subscribe(
+      (books: Book[]) => {
+        this.books = this.booksService.getBooks();
+      }
+    );
   }
 
   filterBookList(){

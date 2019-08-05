@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,6 @@ import { BookService } from './books-container/book.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LoadingSpinnerComponent } from './sheared/loading-spinner/loading-spinner.component';
-import { DropdownDirective } from './sheared/dropdown.directive';
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { ShoppingCardItemComponent } from './shopping-cart/shopping-card-item/shopping-card-item.component';
 import { ShoppingCartEditComponent } from './shopping-cart/shopping-cart-edit/shopping-cart-edit.component';
@@ -35,7 +34,6 @@ import { FilterPipe } from './sheared/filter/filter.pipe';
     ShoppingCartComponent,
     LogInComponent,
     LoadingSpinnerComponent,
-    DropdownDirective,
     ShoppingCardItemComponent,
     ShoppingCartEditComponent,
     FilterPipe

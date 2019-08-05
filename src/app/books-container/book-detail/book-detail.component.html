@@ -17,7 +17,8 @@
       </button>
       <ul class="dropdown-menu" ngbDropdownMenu>
         <li><a style="cursor: pointer;" class="dropdown-item" ngbDropdownItem (click)="onEditBook()">Edit Book</a></li>
-        <li><a style="cursor: pointer;" class="dropdown-item" ngbDropdownItem (click)="onDeleteRecipe()">Delete Book</a></li>
+        <li><a style="cursor: pointer;" class="dropdown-item" ngbDropdownItem (click)="onDeleteRecipe()">Delete Book</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -35,7 +36,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12 align-content-center">
-    {{ book.author.name }} | {{ book.publishDate  | date:'longDate' }}
+    <span *ngFor="let aut of book.author"> {{ aut.name }}, {{ aut.lastName }} </span> | {{ book.publishDate  | date:'yyyy/MM/dd' }}
   </div>
 </div>
 <hr>
@@ -45,14 +46,3 @@
     {{book.outline}}
   </div>
 </div>
-<!--<div class="row">
-    <div class="col-xs-12">
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let ingredient of recipe.ingredients">
-          {{ ingredient.name }} - {{ ingredient.amount }}
-        </li>
-      </ul>
-    </div>
-  </div>-->
