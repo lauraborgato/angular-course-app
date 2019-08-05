@@ -1,11 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
-import { formControlBinding } from '@angular/forms/src/directives/ng_model';
-import { Author } from 'src/app/models/Author';
-import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-book-edit',
@@ -14,7 +11,6 @@ import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class BookEditComponent implements OnInit {
-  publishDate: NgbDatepicker ;
   book: Book;
   id: number = null;
   bookForm: FormGroup;
@@ -36,8 +32,6 @@ export class BookEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log('submit');
-    console.log(this.bookForm.value);
     this.booksService.addBook(this.bookForm.value);
   }
 
@@ -56,7 +50,7 @@ export class BookEditComponent implements OnInit {
       title = book.title;
       price = book.price;
       imageUrl = book.imageUrl;
-     // this.publishDate. ({ year: book.publishDate.getFullYear(), month: book.publishDate.getMonth(), day: book.publishDate.getDay() });
+     
       outline = book.outline;
       if (book['author']) {
         for (let aut of book.author) {
@@ -79,8 +73,6 @@ export class BookEditComponent implements OnInit {
       publishDate: new FormControl(this.publishDate, Validators.required),
       outline: new FormControl(outline, Validators.required)
     });
-
-   // this.bookForm.controls.bookForm.get('')
   }
 
   onAddAuthor() {

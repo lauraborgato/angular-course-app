@@ -16,14 +16,6 @@ export class BookResolverService implements Resolve<Book[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let books = this.bookService.getBooks();
-
-    console.log(books);
-
     return books;
-    /*if (recipes.length === 0) {
-      return this.dataStorageService.fetchRecipes();
-    } else {
-      return recipes;
-    }*/
   }
 }

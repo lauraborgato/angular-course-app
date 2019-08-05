@@ -19,7 +19,6 @@ export class BookService implements OnDestroy {
     constructor(private shoppingCartService: ShoppingCartService) { }
 
     getBooks() {
-        console.log(this.books)
         return this.books.slice();
     }
 
@@ -36,7 +35,6 @@ export class BookService implements OnDestroy {
     }
 
     addBook(book: Book) {
-        console.log(book.publishDate);
         const newBook = { ...book };
         
         this.books.push(book);
