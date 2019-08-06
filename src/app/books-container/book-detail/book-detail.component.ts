@@ -26,13 +26,6 @@ export class BookDetailComponent implements OnInit {
           this.book = this.booksService.getBook(this.id);
         }
       );
-    /*this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.book = this.bookService.getBook(this.id);
-        }
-      );*/
   }
   
   addBookToShoppingCart() {
@@ -40,16 +33,8 @@ export class BookDetailComponent implements OnInit {
   }
   
   onEditBook() {
-    //this.router.navigate(['edit'], {relativeTo: this.route});
     this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
-  /*
-    onDeleteRecipe() {
-      this.recipeService.deleteRecipe(this.id);
-      this.router.navigate(['/recipes']);
-    }
-  */
-
 }
 
 
