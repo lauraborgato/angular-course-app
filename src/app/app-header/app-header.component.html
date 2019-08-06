@@ -19,7 +19,13 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
 
-
+      <li class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-outline-dark" ngbDropdownToggle>Manage</button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <button ngbDropdownItem (click)="onSaveData()">Save Data</button>
+          <button ngbDropdownItem (click)="onFetchData()">Fetch Data</button>
+        </div>
+      </li>
     </ul>
   </div>
   <ul class="navbar-nav">

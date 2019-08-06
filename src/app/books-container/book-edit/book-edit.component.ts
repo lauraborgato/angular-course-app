@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -20,8 +20,6 @@ export class BookEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private booksService: BookService) { }
 
   ngOnInit() {
-
-
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -33,7 +31,22 @@ export class BookEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.booksService.addBook(this.bookForm.value);
+    console.log(this.editMode);
+
+    let book = {
+      ...this.bookForm.value
+    }
+
+    book = {
+      ...book,
+      publishDate: new Date(book.publishDate['year'], book.publishDate['month'], book.publishDate['day'])
+    }
+
+    if(!this.editMode){
+      this.booksService.addBook(book);
+    } else{
+      this.booksService.updateBook(this.id, book);
+    }
   }
 
   clearForm() {

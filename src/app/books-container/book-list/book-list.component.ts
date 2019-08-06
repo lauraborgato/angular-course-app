@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Component, OnInit, } from '@angular/core';
 
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
@@ -16,16 +15,15 @@ export class BookListComponent implements OnInit {
   constructor(private booksService: BookService) { }
 
   ngOnInit() {
-    this.booksService.getBooks().subscribe(response => {
+
+    this.books = this.booksService.getBooks();
+
+    this.booksService.subject.subscribe(response => {
       this.books = response;
     });
   }
 
   filterBookList() {
-    this.booksService.getBooks().subscribe((books: Book[]) => {
-      this.books = books;
-    })
     this.books.filter((book, index) => { return book.title.toLowerCase().includes(this.searchText.toLowerCase()) ? book : null });
   }
-
 }

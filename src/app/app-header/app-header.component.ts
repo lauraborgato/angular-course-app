@@ -3,6 +3,7 @@ import { AuthService } from '../log-in/auth.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import { Book } from '../models/book';
+import { DataBaseService } from '../sheared/database.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   private scSub: Subscription;
   totalItems: number;
-  constructor(private authService:AuthService, private shoppingCartService : ShoppingCartService) { }
+  constructor(private authService:AuthService, private shoppingCartService : ShoppingCartService, private dataBaseService: DataBaseService) { }
 
   ngOnInit() {
     this.totalItems = this.shoppingCartService.getTotalItems();
@@ -33,5 +34,13 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.userSub.unsubscribe();
     this.scSub.unsubscribe();
+  }
+
+  onSaveData() {
+    this.dataBaseService.storeBooks();
+  }
+
+  onFetchData() {
+    this.dataBaseService.fetchBooks().subscribe();
   }
 }
