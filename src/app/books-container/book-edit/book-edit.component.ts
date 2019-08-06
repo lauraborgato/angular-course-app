@@ -11,7 +11,6 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 
 export class BookEditComponent implements OnInit {
-  publishDate: Date;
   book: Book;
   id: number = null;
   bookForm: FormGroup;
@@ -31,21 +30,10 @@ export class BookEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.editMode);
-
-    let book = {
-      ...this.bookForm.value
-    }
-
-    book = {
-      ...book,
-      publishDate: new Date(book.publishDate['year'], book.publishDate['month'], book.publishDate['day'])
-    }
-
     if(!this.editMode){
-      this.booksService.addBook(book);
+      this.booksService.addBook(this.bookForm.value);
     } else{
-      this.booksService.updateBook(this.id, book);
+      this.booksService.updateBook(this.id, this.bookForm.value);
     }
   }
 
@@ -59,12 +47,13 @@ export class BookEditComponent implements OnInit {
     let price = 0;
     let imageUrl = '';
     let outline = '';
+    let publishDate = null;
     if (this.editMode) {
       const book = this.booksService.getBook(this.id);
       title = book.title;
       price = book.price;
       imageUrl = book.imageUrl;
-     
+      publishDate = book.publishDate;
       outline = book.outline;
       if (book['author']) {
         for (let aut of book.author) {
@@ -84,7 +73,7 @@ export class BookEditComponent implements OnInit {
       author: author,
       price: new FormControl(price, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
-      publishDate: new FormControl(this.publishDate, Validators.required),
+      publishDate: new FormControl(publishDate, Validators.required),
       outline: new FormControl(outline, Validators.required)
     });
   }

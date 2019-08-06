@@ -36,7 +36,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12 align-content-center">
-    <span *ngFor="let aut of book.author"> {{ aut.name }}, {{ aut.lastName }} </span> | {{ book.publishDate | date:'yyyy/MM/dd' }}
+    <span *ngFor="let aut of book.author"> {{ aut.name }}, {{ aut.lastName }} </span> | {{ book.publishDate['year'] }}/{{ book.publishDate['month'] }}/{{ book.publishDate['day'] }}
   </div>
 </div>
 <hr>
