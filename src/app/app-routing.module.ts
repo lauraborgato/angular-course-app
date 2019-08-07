@@ -7,14 +7,15 @@ import { BookResolverService } from './books-container/book-resolver.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { BookEditComponent } from './books-container/book-edit/book-edit.component';
+import {AuthGuard} from './log-in/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/books', pathMatch: 'full' },
   {
     path: 'books', component: BooksContainerComponent, children: [
-      { path: 'new', component: BookEditComponent },
+      { path: 'new', component: BookEditComponent, canActivate:[AuthGuard] },
       { path: ':id', component: BookDetailComponent, resolve: [BookResolverService] },
-      { path: ':id/edit', component: BookEditComponent, resolve: [BookResolverService] }
+      { path: ':id/edit', component: BookEditComponent, resolve: [BookResolverService], canActivate:[AuthGuard]}
     ]
   },
   { path: 'cart', component: ShoppingCartComponent },

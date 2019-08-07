@@ -47,7 +47,10 @@ import { FilterPipe } from './sheared/filter/filter.pipe';
     AngularFontAwesomeModule,
     NgbModule
   ],
-  providers: [BookService, ShoppingCartService],
+  providers: [
+    BookService, 
+    ShoppingCartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

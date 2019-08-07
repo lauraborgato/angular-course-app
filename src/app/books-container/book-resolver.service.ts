@@ -16,7 +16,7 @@ export class BookResolverService implements Resolve<Book[]> {
     private dataBaseService: DataBaseService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot, ) {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let books = this.bookService.getBooks();
     if (books.length === 0) {
       return this.dataBaseService.fetchBooks();
