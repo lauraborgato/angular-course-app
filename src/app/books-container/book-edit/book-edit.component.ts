@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class BookEditComponent implements OnInit {
   bookForm: FormGroup;
   editMode: boolean = false;
 
-  constructor(private route: ActivatedRoute, private booksService: BookService) { }
+  constructor(private route: ActivatedRoute, private booksService: BookService, private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -30,10 +30,13 @@ export class BookEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.editMode){
-      this.booksService.addBook(this.bookForm.value);
-    } else{
-      this.booksService.updateBook(this.id, this.bookForm.value);
+    if(this.bookForm.valid){
+      if(!this.editMode){
+        this.booksService.addBook(this.bookForm.value);
+      } else{
+        this.booksService.updateBook(this.id, this.bookForm.value);
+      }
+      this.router.navigate(['/books']);
     }
   }
 
@@ -87,5 +90,9 @@ export class BookEditComponent implements OnInit {
         fakeName: new FormControl(null)
       })
     );
+  }
+
+  onDeleteAuthor(index: number) {
+    (<FormArray>this.bookForm.get('author')).removeAt(index);
   }
 }

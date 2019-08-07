@@ -36,6 +36,12 @@
       <div class="col-sm-12" formArrayName="author">
         <div class="row" *ngFor="let aut of bookForm.get('author').controls; let i = index" [formGroupName]="i"
           style="margin-top: 10px;">
+          <div class="col-xs-2">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteAuthor(i)"><fa name="times-circle" class="icon-large"></fa></button>
+          </div>
           <div class="col-sm-12">
             <label for="name">AuthorName</label>
             <input type="text" class="form-control col-sm-6" formControlName="name">
@@ -61,14 +67,14 @@
           </div>
         </div>
       </div>
-
       <div class="col-sm-12">
         <button type="button" class="btn btn-success" (click)="onAddAuthor()">Add Author</button>
       </div>
+
       <hr>
 
       <div class="col-sm-12">
-        <button class="btn btn-success" type="submit">Add</button> |
+        <button class="btn btn-success" type="submit">{{ !editMode ? 'Add' : 'Save' }}</button> |
         <button class="btn btn-danger" type="button" (click)="clearForm()">Clear</button>
       </div>
     </form>
