@@ -25,8 +25,8 @@ export class BookService implements OnDestroy {
         this.subject.unsubscribe();
     }
 
-    addBookToShoppingList(book: Book, index: number) {
-        this.shoppingCartService.addBookToCart(book, index);
+    addBookToShoppingList(book: Book) {
+        this.shoppingCartService.addBookToCart(book);
     }
 
     setBooks(books: Book[]) {

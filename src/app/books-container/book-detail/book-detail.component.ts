@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
+import { AuthService } from 'src/app/log-in/auth.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -12,10 +13,12 @@ import { BookService } from '../book.service';
 export class BookDetailComponent implements OnInit {
   book: Book;
   id: number;
+  isAuthenticate: boolean = false;
 
   constructor(private booksService: BookService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -26,10 +29,13 @@ export class BookDetailComponent implements OnInit {
           this.book = this.booksService.getBook(this.id);
         }
       );
+    this.authService.user.subscribe(user => {
+      this.isAuthenticate = !!user;
+    })
   }
   
   addBookToShoppingCart() {
-    this.booksService.addBookToShoppingList(this.book, this.id);
+    this.booksService.addBookToShoppingList(this.book);
   }
   
   onEditBook() {

@@ -13,16 +13,16 @@
         <a class="nav-link" routerLink="/cart">Shopping Cart</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="onLogout()" *ngIf='isAuthenticate'>Log Out</a>
+        <a class="nav-link" (click)="onLogOut()" *ngIf='isAuthenticated'>Log Out</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/login" *ngIf="!isAuthenticated">Login</a>
       </li>
 
-      <li class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+      <li class="btn-group" ngbDropdown role="group">
         <button class="btn btn-outline-dark" ngbDropdownToggle>Manage</button>
         <div class="dropdown-menu" ngbDropdownMenu>
-          <button ngbDropdownItem (click)="onSaveData()">Save Data</button>
+          <button ngbDropdownItem (click)="onSaveData()" *ngIf='isAuthenticated'>Save Data</button>
           <button ngbDropdownItem (click)="onFetchData()">Fetch Data</button>
         </div>
       </li>

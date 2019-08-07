@@ -1,7 +1,8 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, OnDestroy, } from '@angular/core';
 
 import { Book } from 'src/app/models/book';
 import { BookService } from '../book.service';
+import { AuthService } from 'src/app/log-in/auth.service';
 
 @Component({
   selector: 'app-book-list',
@@ -11,8 +12,8 @@ import { BookService } from '../book.service';
 export class BookListComponent implements OnInit {
   books: Book[];
   searchText = "";
-
-  constructor(private booksService: BookService) { }
+  isAuthenticate: boolean;
+  constructor(private booksService: BookService, private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -21,6 +22,10 @@ export class BookListComponent implements OnInit {
     this.booksService.subject.subscribe(response => {
       this.books = response;
     });
+
+    this.authService.user.subscribe(user => {
+      this.isAuthenticate = !!user
+    })
   }
 
   filterBookList() {

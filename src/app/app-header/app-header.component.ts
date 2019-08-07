@@ -21,10 +21,9 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     this.totalItems = this.shoppingCartService.getTotalItems();
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuthenticated = !!user;
+      console.log('isAuthenticated: ' + this.isAuthenticated);
     });
     this.scSub = this.shoppingCartService.cartSubject.subscribe(()=>{ this.totalItems = this.shoppingCartService.getTotalItems()})
-
-    console.log(this.totalItems);
   }
   
   onLogOut(){

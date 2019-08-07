@@ -28,11 +28,12 @@ export class ShoppingCartService implements OnInit{
         return this.cart[id];
     }
 
-    addBookToCart(book: Book, index: number){
+    addBookToCart(book: Book){
         const existingBook = this.cart.filter((b : Book) => { return b.title === book.title });
         console.log(existingBook);
         if(existingBook.length>0){
             existingBook[0].amount++;
+            let index = this.cart.indexOf(existingBook[0]);
             this.cart[index] = existingBook[0];
         }
         else{
