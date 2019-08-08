@@ -21,6 +21,7 @@ import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { ShoppingCardItemComponent } from './shopping-cart/shopping-card-item/shopping-card-item.component';
 import { ShoppingCartEditComponent } from './shopping-cart/shopping-cart-edit/shopping-cart-edit.component';
 import { FilterPipe } from './sheared/filter/filter.pipe';
+import { CheckOut } from './shopping-cart/check-out/check-out.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FilterPipe } from './sheared/filter/filter.pipe';
     LoadingSpinnerComponent,
     ShoppingCardItemComponent,
     ShoppingCartEditComponent,
-    FilterPipe
+    FilterPipe,
+    CheckOut
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Book } from '../models/book';
 import { ShoppingCartService } from './shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,21 +13,26 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   cart:Book[] = [];
+  hasBooks: boolean = false;
   private cartSubs: Subscription;
   total: number;
-  constructor(private shoppingCartService: ShoppingCartService, config: NgbModalConfig, private modalService: NgbModal) { 
-    config.backdrop = 'static';
-    config.keyboard = false;
+
+  constructor(private shoppingCartService: ShoppingCartService, config: NgbModalConfig, private modalService: NgbModal, private router: Router) { 
+    config.backdrop = true;
+    config.keyboard = true;
   }
 
   ngOnInit() {
     this.cart = this.shoppingCartService.getCart();
     this.total = this.shoppingCartService.getTotal();
+    this.hasBooks = this.cart.length > 0 ? true : false;
+
     this.cartSubs = this.shoppingCartService.cartSubject
       .subscribe(
         (books: Book[]) => {
           this.cart = books;
           this.total = this.shoppingCartService.getTotal();
+          this.hasBooks = this.cart.length > 0 ? true : false;
         }
       );
   }
@@ -43,4 +49,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.modalService.open(content);
   }
 
+  onCheckout(){
+    //this.clearCart();
+    //this.total = 0;
+    this.modalService.dismissAll();
+    this.router.navigate(['checkout']);
+  }
 }

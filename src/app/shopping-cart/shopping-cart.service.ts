@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { Subject } from 'rxjs';
 
@@ -7,16 +7,12 @@ export class EditedCart{
 }
 
 @Injectable({providedIn: 'root'})
-export class ShoppingCartService implements OnInit{
+export class ShoppingCartService{
     cartSubject = new Subject<Book[]>();
     startEditing = new Subject<number>();
     private cart: Book[] = [];
     
     constructor(){}
-
-    ngOnInit(){
-        console.log(this.cart);
-    }
 
     getCart(){
        return this.cart;
@@ -28,7 +24,6 @@ export class ShoppingCartService implements OnInit{
 
     addBookToCart(book: Book){
         const existingBook = this.cart.filter((b : Book) => { return b.title === book.title });
-        console.log(existingBook);
         if(existingBook.length>0){
             existingBook[0].amount++;
             let index = this.cart.indexOf(existingBook[0]);
@@ -43,7 +38,6 @@ export class ShoppingCartService implements OnInit{
     }
 
     removeBookFromCart(id: number){
-        console.log(id);
         this.cart.splice(id, 1);
         this.cartSubject.next(this.cart.slice());
     }

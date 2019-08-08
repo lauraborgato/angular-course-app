@@ -19,7 +19,7 @@
     </a>
   </ul>
 </div>
-<div class="row text-success text-right">
+<div class="row text-success text-right" *ngIf='hasBooks'>
   <div class="col-sm-7">
     <h2>Total: {{ total }}</h2>
     <button class="btn btn-success" (click)="open(content)">Check Out</button> |
@@ -38,7 +38,7 @@
     <p>Are you sure you want to check out this books?</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success">Ok</button>
+    <button type="button" class="btn btn-outline-success" (click)="onCheckout()" ngbAutofocus>Ok</button>
     <button type="button" class="btn btn-outline-dark" (click)="c('Cross click')">Cancel</button>
   </div>
 </ng-template>
