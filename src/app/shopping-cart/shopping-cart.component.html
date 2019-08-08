@@ -9,7 +9,7 @@
     <button class="btn btn-success" routerLink="/books">Add to cart</button>
   </div>
 </div>
-<hr>
+<br/>
 <div class="row">
   <ul class="list-group col-sm-12">
     <a class="list-group-item" style="cursor: pointer" *ngFor="let book of cart; let i = index">
@@ -19,11 +19,26 @@
     </a>
   </ul>
 </div>
-<hr>
 <div class="row text-success text-right">
   <div class="col-sm-7">
     <h2>Total: {{ total }}</h2>
-    <button class="btn btn-success">Check Out</button> |
+    <button class="btn btn-success" (click)="open(content)">Check Out</button> |
     <button class="btn btn-danger" (click)="clearCart()">Cancel</button>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Check Out</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to check out this books?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success">Ok</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Cross click')">Cancel</button>
+  </div>
+</ng-template>

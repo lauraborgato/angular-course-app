@@ -1,8 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Book } from '../models/book';
 import { Subject } from 'rxjs';
-import { Author } from '../models/Author';
-import { updateClassDeclaration } from 'typescript';
 
 export class EditedCart{
     constructor(public name: string, public amount: number, public index: number){}
